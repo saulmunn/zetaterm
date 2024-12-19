@@ -102,7 +102,7 @@ def start():
 
 def ending_message(correct, attempts):
     print("Time's up!")
-    print(f"You answered {correct} correctly out of {attempts} attempted.\n\{correct} POINTS!")
+    print(f"You answered {correct} correctly out of {attempts} attempted.\n\\ {correct} POINTS! \\")
     next_action = input("\nPress \"p\" to play again, or \"s\" to edit the settings.\n")
     if next_action == 'p':
         run_test()
