@@ -25,12 +25,7 @@ def set_settings():
     #   - range of numbers
     #   - time duration
 
-
-
-def run_test(duration=10):
-    print("Welcome to the Zetaterm: Zetamac in the terminal.")
-    print("The Arithmetic Game is a fast-paced speed drill where you're given limited amount of time to solve as many arithmetic problems as you can.")
-    print("Press Enter when you're ready to begin.")
+def run_test(duration=15):
     input()
     start_time = time.time()
     correct = 0
@@ -42,22 +37,32 @@ def run_test(duration=10):
             break
         expression, answer = generate_problem()
         try:
-            user_answer = input(f"{expression} = ")
-            if user_answer.strip().isdigit() or (user_answer.strip().startswith('-') and user_answer.strip()[1:].isdigit()):
-                user_answer = int(user_answer.strip())
-                if user_answer == answer:
-                    correct += 1
-            attempts += 1
+            while True:
+                user_answer = input(f"{expression} = ")
+                if user_answer.strip().isdigit() or (user_answer.strip().startswith('-') and user_answer.strip()[1:].isdigit()):
+                    user_answer = int(user_answer.strip())
+                    if user_answer == answer:
+                        correct += 1
+                        print("[correct]\n")
+                        break
+                attempts += 1
         except KeyboardInterrupt:
             break
+    ending_message(correct, attempts)
 
+def start():
+    print("\n\nWelcome to the Zetaterm: Zetamac in the terminal.")
+    print("\nThe Arithmetic Game is a fast-paced speed drill where you're given limited amount of time to solve as many arithmetic problems as you can.")
+    print("\n\nPress Enter when you're ready to begin.")
+    run_test()
+
+def ending_message(correct, attempts):
     print("Time's up!")
     print("You answered", correct, "correctly out of", attempts, "attempted.")
+    input("\nPress Enter when you're ready to play again.")
+    run_test()
 
-
-def arith_prob():
-    pass
 
 
 if __name__ == "__main__":
-    run_test()
+    start()
