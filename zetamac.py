@@ -8,21 +8,21 @@ def generate_problem():
     operations = ['+', '-', '*', '/']
     operation = random.choice(operations)
     if operation == '/':
-        b = random.randint(1, 20)
-        c = random.randint(1, 20)
+        b = random.randint(2, 12)
+        c = random.randint(2, 100)
         a = b*c
         expression = f"{a} / {b}"
         answer = eval(expression)
         return expression, answer
     elif operation == "+" or operation == "-":
-        a = random.randint(1, 100)
-        b = random.randint(1, 100)
+        a = random.randint(2, 100)
+        b = random.randint(2, 100)
         expression = f"{a} {operation} {b}"
         answer = eval(expression)
         return expression, answer
     elif operation == "*":
-        a = random.randint(1, 20)
-        b = random.randint(1, 20)
+        a = random.randint(2, 12)
+        b = random.randint(2, 100)
         expression = f"{a} {operation} {b}"
         answer = eval(expression)
         return expression, answer
