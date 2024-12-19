@@ -7,19 +7,26 @@ game_duration = 120
 def generate_problem():
     operations = ['+', '-', '*', '/']
     operation = random.choice(operations)
-    if operation != '/':
-        a = random.randint(1, 20)
-        b = random.randint(1, 20)
-        expression = f"{a} {operation} {b}"
-        answer = eval(expression)
-        return expression, answer
-    else:
+    if operation == '/':
         b = random.randint(1, 20)
         c = random.randint(1, 20)
         a = b*c
         expression = f"{a} / {b}"
         answer = eval(expression)
         return expression, answer
+    elif operation == "+" or operation == "-":
+        a = random.randint(1, 100)
+        b = random.randint(1, 100)
+        expression = f"{a} {operation} {b}"
+        answer = eval(expression)
+        return expression, answer
+    elif operation == "*":
+        a = random.randint(1, 20)
+        b = random.randint(1, 20)
+        expression = f"{a} {operation} {b}"
+        answer = eval(expression)
+        return expression, answer
+
 
 
 def set_settings(): # the "settings" menubar
