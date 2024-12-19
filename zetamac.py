@@ -3,17 +3,34 @@ import time
 
 def generate_problem():
     operations = ['+', '-', '*', '/']
-    op = random.choice(operations)
-    a = random.randint(1, 20)
-    b = random.randint(1, 20)
-    expression = f"{a} {op} {b}"
-    answer = eval(expression)
-    return expression, answer
+    operation = random.choice(operations)
+    if operation != '/':
+        a = random.randint(1, 20)
+        b = random.randint(1, 20)
+        expression = f"{a} {operation} {b}"
+        answer = eval(expression)
+        return expression, answer
+    else:
+        b = random.randint(1, 20)
+        c = random.randint(1, 20)
+        a = b*c
+        expression = f"{a} / {b}"
+        answer = eval(expression)
+        return expression, answer
 
-def run_test(duration=120):
-    print("Welcome to the Zetamac-style mental math test!")
-    print("You have", duration, "seconds to solve as many problems as possible.")
-    print("Press Enter when you are ready to begin.")
+def set_settings():
+    pass
+    # add some settings
+    #   - which operations you want to include
+    #   - range of numbers
+    #   - time duration
+
+
+
+def run_test(duration=10):
+    print("Welcome to the Zetaterm: Zetamac in the terminal.")
+    print("The Arithmetic Game is a fast-paced speed drill where you're given limited amount of time to solve as many arithmetic problems as you can.")
+    print("Press Enter when you're ready to begin.")
     input()
     start_time = time.time()
     correct = 0
@@ -26,8 +43,6 @@ def run_test(duration=120):
         expression, answer = generate_problem()
         try:
             user_answer = input(f"{expression} = ")
-            if time.time() - start_time > duration:  
-                break
             if user_answer.strip().isdigit() or (user_answer.strip().startswith('-') and user_answer.strip()[1:].isdigit()):
                 user_answer = int(user_answer.strip())
                 if user_answer == answer:
@@ -38,6 +53,11 @@ def run_test(duration=120):
 
     print("Time's up!")
     print("You answered", correct, "correctly out of", attempts, "attempted.")
+
+
+def arith_prob():
+    pass
+
 
 if __name__ == "__main__":
     run_test()
