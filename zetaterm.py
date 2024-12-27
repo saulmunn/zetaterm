@@ -5,12 +5,14 @@ game_duration = 120
 
 normal_game_mode = "Normal Game Mode"
 decimal_game_mode = "Decimal Game Mode"
+easy_game_mode = "Easy Game Mode"
 hard_game_mode = "Hard Game Mode"
 cheat_mode = False
 current_game_mode = normal_game_mode
 
 normal_bounds = [2,12,100]
 decimal_bounds = [0.01,1.00,2.00]
+easy_bounds = [2,10,12]
 hard_bounds = [2,100,1000]
 current_bounds = normal_bounds.copy()
 
@@ -85,7 +87,7 @@ def set_settings(): # the "settings" menubar
     #function that lets the user set the "mode" of play (e.g. decimal-mode, normal-mode, hard-mode)
     def set_mode():
         global current_bounds, current_game_mode, cheat_mode
-        desired_mode = input("\n\nWhat mode do you want to enter?\n\n\"nm\" — normal-mode (default settings)\n\"dm\" — decimal-mode (to drill arithmetic with decimals)\n\"hm\" — hard mode (3 digit numbers)\n\n").strip()
+        desired_mode = input("\n\nWhat mode do you want to enter?\n\n\"nm\" — normal-mode (default settings)\n\"dm\" — decimal-mode (to drill arithmetic with decimals)\n\"em\" — easy mode (smaller numbers)\n\"hm\" — hard mode (three digit numbers)\n\n").strip()
         if desired_mode == "nm":
             current_game_mode = normal_game_mode
             current_bounds = normal_bounds
@@ -95,6 +97,9 @@ def set_settings(): # the "settings" menubar
         elif desired_mode == "hm":
             current_game_mode = hard_game_mode
             current_bounds = hard_bounds
+        elif desired_mode == "em":
+            current_game_mode = easy_game_mode
+            current_bounds = easy_bounds
         elif desired_mode == "cmT":
             cheat_mode = True
         elif desired_mode == "cmF":
